@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${PG_HOST:localhost:5432}/search_engine
+    username: ${PG_USER:se_user}
+    password: ${PG_PASSWORD:se_password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    open-in-view: true
+    hibernate.ddl-auto: none
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
+    drop-first: true
+
+indexing-settings:
+  sites:
+    - url: http://www.playback.ru
+      name: PlayBack.Ru
+    - url: https://www.skillbox.ru
+      name: Skillbox
+
+  userAgent: Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6
+  referrer: http://www.google.com
+
